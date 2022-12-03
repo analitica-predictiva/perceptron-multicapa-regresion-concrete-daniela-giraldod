@@ -16,7 +16,7 @@ def pregunta_01():
     Carga y separación de los datos en `X` `y`
     """
     # Lea el archivo `concrete.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv("concrete.csv")  
+    df = pd.read_csv("concrete.csv", sep=',')  
 
     # Asigne la columna `strength` a la variable `y`.
     y = df["strength"]  
@@ -25,7 +25,7 @@ def pregunta_01():
     x = df.copy()  
 
     # Remueva la columna `strength` del DataFrame `X`.
-    x.pop("strength")  
+    x = x.drop("strength", axis=1)  
 
     # Retorne `X` y `y`
     return x, y
