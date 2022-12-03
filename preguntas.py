@@ -16,47 +16,39 @@ def pregunta_01():
     Carga y separación de los datos en `X` `y`
     """
     # Lea el archivo `concrete.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv("concrete.csv", header=0, sep=",")
-
+    df = pd.read_csv('concrete.csv',sep = ',',thousands = None,decimal = '.')
+    
     # Asigne la columna `strength` a la variable `y`.
-    y = df["strength"].copy()
-
+    y = df['strength']
+    
     # Asigne una copia del dataframe `df` a la variable `X`.
-    X = df.copy()
-
+    x = df.copy()  
+    
     # Remueva la columna `strength` del DataFrame `X`.
-    X = X.drop("strength", axis=1)
+    x.drop(['strength'],axis=1,inplace=True)  
 
     # Retorne `X` y `y`
-    return X, y
+    return x, y
 
 def pregunta_02():
     """
     Preparación del dataset.
     """
 
-     # Importe train_test_split
-    from sklearn.model_selection import train_test_split
+    # Lea el archivo `concrete.csv` y asignelo al DataFrame `df`
+    df = pd.read_csv('concrete.csv',sep = ',',thousands = None,decimal = '.')
+    
+    # Asigne la columna `strength` a la variable `y`.
+    y = df['strength']
+    
+    # Asigne una copia del dataframe `df` a la variable `X`.
+    x = df.copy()  
+    
+    # Remueva la columna `strength` del DataFrame `X`.
+    x.drop(['strength'],axis=1,inplace=True)  
 
-    # Cargue los datos de ejemplo y asigne los resultados a `X` y `y`.
-    x, y = pregunta_01()
-
-    # Divida los datos de entrenamiento y prueba. La semilla del generador de números
-    # aleatorios es 12453. Use el 75% de los patrones para entrenamiento.
-    (  
-        x_train,  
-        x_test,  
-        y_train,  
-        y_test,  
-    ) = train_test_split(  
-        x,  
-        y,  
-        test_size=0.25,  
-        random_state=12453,  
-    )  
-
-    # Retorne `X_train`, `X_test`, `y_train` y `y_test`
-    return x_train, x_test, y_train, y_test
+    # Retorne `X` y `y`
+    return x, y
 
 
 def pregunta_03():
@@ -64,11 +56,10 @@ def pregunta_03():
     Construcción del pipeline
     """
 
-    from sklearn.pipeline import Pipeline
-    from sklearn.preprocessing import MinMaxScaler
     from sklearn.neural_network import MLPRegressor
-
-
+    from sklearn.preprocessing import MinMaxScaler
+    from sklearn.pipeline import Pipeline
+    
     # Cree un pipeline que contenga un estimador MinMaxScaler y un estimador
     # MLPRegressor
     pipeline = Pipeline(
