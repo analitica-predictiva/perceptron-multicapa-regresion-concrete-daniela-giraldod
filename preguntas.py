@@ -16,20 +16,19 @@ def pregunta_01():
     Carga y separación de los datos en `X` `y`
     """
     # Lea el archivo `concrete.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv("concrete.csv", sep = ',', thousands = None, decimal = '.')  
+    df = pd.read_csv("concrete.csv" , sep = ',', thousands = None, decimal = '.')  
 
     # Asigne la columna `strength` a la variable `y`.
-    y = pd["strength"]  
+    y = df["strength"]  
 
     # Asigne una copia del dataframe `df` a la variable `X`.
     x = df.copy()  
 
     # Remueva la columna `strength` del DataFrame `X`.
-    x.drop(labels=['strength'],axis=1,inplace=True)
+    x.drop(columns="strength",inplace=True)  
 
     # Retorne `X` y `y`
     return x, y
-
 
 def pregunta_02():
     """
