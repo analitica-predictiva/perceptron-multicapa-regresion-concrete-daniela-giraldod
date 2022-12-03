@@ -16,7 +16,7 @@ def pregunta_01():
     Carga y separación de los datos en `X` `y`
     """
     # Lea el archivo `concrete.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv("https://raw.githubusercontent.com/analitica-predictiva/perceptron-multicapa-regresion-concrete-daniela-giraldod/main/concrete.csv")  
+    df = pd.read_csv("concrete.csv")  
 
     # Asigne la columna `strength` a la variable `y`.
     y = pd["strength"]  
